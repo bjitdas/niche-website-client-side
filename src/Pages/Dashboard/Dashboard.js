@@ -7,6 +7,7 @@ import AddProducts from './AddProducts/AddProducts';
 import DashboardHome from './DashboardHome/DashboardHome';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import ManageOrders from './ManageOrders/ManageOrders';
+import ManageProducts from './ManageProducts/ManageProducts';
 import MyOrders from './MyOrders/MyOrders';
 import Payment from './Payment/Payment';
 import Review from './Review/Review';
@@ -43,6 +44,9 @@ const Dashboard = () => {
                             <ListGroup.Item>
                                     <Link to={`${url}/manageorders`}>Manage Orders</Link>
                             </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Link to={`${url}/manageproducts`}>Manage Products</Link>
+                                </ListGroup.Item>
                             </>}
                         </ListGroup>
                     </div>
@@ -71,6 +75,9 @@ const Dashboard = () => {
                             </AdminRoute>
                             <AdminRoute path={`${path}/manageorders`}>
                                 <ManageOrders></ManageOrders>
+                            </AdminRoute>
+                            <AdminRoute path={`${path}/manageproducts`}>
+                                <ManageProducts></ManageProducts>
                             </AdminRoute>
                         </Switch>
 

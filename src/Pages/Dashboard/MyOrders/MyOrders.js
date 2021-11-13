@@ -26,15 +26,17 @@ const MyOrders = () => {
                     </thead>
                     {
                         myOrders.map(myOrder =>
+
                             <tbody
 
                                 key={myOrder._id}>
-                                <tr>
+                                {myOrder.email === user.email && <tr>
                                     <td>{myOrder.productName}</td>
                                     <td>{myOrder.price}</td>
                                     <td><button type="submit">Cancel Order</button> </td>
-                                </tr>
+                                </tr>}
                             </tbody>
+
                         )
                     }
                 </Table>
