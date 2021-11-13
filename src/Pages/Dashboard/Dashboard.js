@@ -11,6 +11,7 @@ import ManageProducts from './ManageProducts/ManageProducts';
 import MyOrders from './MyOrders/MyOrders';
 import Payment from './Payment/Payment';
 import Review from './Review/Review';
+import './Dashboard.css'
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
@@ -21,9 +22,10 @@ const Dashboard = () => {
             <Row>
                 <Col md={3}>
                     <div className="border-end border-2 border-secondary">
+                        <div className="dashboard-content">
                         <ListGroup variant="flush">
                             <ListGroup.Item>
-                                <Link to={`${url}`}>Dashboard</Link>
+                                    <Link to={`${url}`}>Dashboard</Link>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Link to={`${url}/myorders`}>My Order</Link>
@@ -49,6 +51,7 @@ const Dashboard = () => {
                                 </ListGroup.Item>
                             </>}
                         </ListGroup>
+                        </div>
                     </div>
                 </Col>
                 <Col md={8}>
