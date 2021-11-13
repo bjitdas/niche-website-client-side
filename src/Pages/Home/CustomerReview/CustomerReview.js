@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUserCircle } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 
 const CustomerReview = ({ buyerReview }) => {
@@ -17,7 +18,12 @@ const CustomerReview = ({ buyerReview }) => {
                 </div>
                 <div>
                     <h5>{name}</h5>
-                    <p>Rating: {Rating} </p>
+                    <div style={{ color: 'goldenrod', fontSize: '25px' }}>
+                        {[...Array(parseInt(Rating))].map(star => {
+                            return <FaStar />
+                        })}
+
+                    </div>
                     <p> {review}</p>
                 </div>
             </div>
