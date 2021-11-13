@@ -3,6 +3,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { MdOutlineDirectionsBike } from "react-icons/md";
 import useAuth from '../../../Hooks/useAuth';
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
     const { user, logOut } = useAuth();
@@ -22,10 +23,12 @@ const Header = () => {
                             {user.email && <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>}
                         </Nav>
                         <Nav>
-                            {user.email ? <button className="me-1 fs-6 btn btn-warning rounded" onClick={logOut}>Log Out</button>
+                            {user.email ? <button className="me-1 btn btn-warning rounded" onClick={logOut}>Log Out</button>
                                 :
                                 <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-                            <span className="text-light pt-1 fs-4">{user?.displayName?.split(" ")[0]}</span>
+                            {user.email && <span className="text-light pt-1 fs-4">{user.photoURL ? <img style={{ borderRadius: '50%', width: '40px' }} src={user?.photoURL} alt="" /> : <span style={{ fontSize: '40px' }}> <FaUserCircle /> </span>} </span>}
+
+                            <span className="text-light pt-4 fs-6 mx-1">{user?.displayName?.split(" ")[0]}</span>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
