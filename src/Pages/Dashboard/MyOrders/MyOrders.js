@@ -3,36 +3,35 @@ import { Table } from 'react-bootstrap';
 import useAuth from '../../../Hooks/useAuth';
 
 const MyOrders = () => {
-    const [orders, setOrders] = useState([])
+    const [myOrders, setMyOrders] = useState([])
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch(`https://safe-cove-84199.herokuapp.com/orders?email=${user.email}`)
             .then(res => res.json())
-            .then(data => setOrders(data))
-    }, [])
+            .then(data => setMyOrders(data))
+    }, [user.email])
 
     return (
         <div>
+            <h6>{user?.displayName} your orders</h6>
             <div>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                            <th>Customer Name</th>
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Manage</th>
                         </tr>
                     </thead>
                     {
-                        orders.map(order =>
+                        myOrders.map(myOrder =>
                             <tbody
 
-                                key={order._id}>
+                                key={myOrder._id}>
                                 <tr>
-                                    <td>{order.customerName}</td>
-                                    <td>{order.productName}</td>
-                                    <td>{order.price}</td>
+                                    <td>{myOrder.productName}</td>
+                                    <td>{myOrder.price}</td>
                                     <td><button type="submit">Cancel Order</button> </td>
                                 </tr>
                             </tbody>

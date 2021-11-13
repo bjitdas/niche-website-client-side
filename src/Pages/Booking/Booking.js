@@ -12,7 +12,7 @@ const Booking = () => {
     const history = useHistory()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://safe-cove-84199.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [])
@@ -37,9 +37,8 @@ const Booking = () => {
             productName: name,
             price: price
         }
-        console.log(order)
 
-        axios.post('http://localhost:5000/orders', order)
+        axios.post('https://safe-cove-84199.herokuapp.com/orders', order)
             .then(res => {
                 if (res.data.insertedId) {
                     history.push('/orderplaced')

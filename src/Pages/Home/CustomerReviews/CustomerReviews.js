@@ -6,14 +6,14 @@ const CustomerReviews = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://safe-cove-84199.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
 
     }, [])
 
     return (
-        <div className="my-5" style={{ padding: '30px', backgroundColor: 'aquamarine' }}>
+        <div className="my-5" style={{ padding: '30px', backgroundColor: '#154360' }}>
             <div className="w-75 mx-auto">
                 <h2 className="text-danger">Customer Reviews</h2>
                 <Row xs={12} md={2}>

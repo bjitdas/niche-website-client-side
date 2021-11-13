@@ -1,6 +1,8 @@
 import React from 'react';
 import { Col, ListGroup, Row } from 'react-bootstrap';
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
+import AdminRoute from '../Login/AdminRoute/AdminRoute';
 import AddProducts from './AddProducts/AddProducts';
 import DashboardHome from './DashboardHome/DashboardHome';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
@@ -11,6 +13,7 @@ import Review from './Review/Review';
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
+    const { admin } = useAuth();
 
     return (
         <div className="my-5 mx-2">
@@ -22,16 +25,7 @@ const Dashboard = () => {
                                 <Link to={`${url}`}>Dashboard</Link>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Link to={`${url}/addproducts`}>Add Products</Link>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Link to={`${url}/makeadmin`}>Make Admin</Link>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
                                 <Link to={`${url}/myorders`}>My Order</Link>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Link to={`${url}/manageorders`}>Manage Orders</Link>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Link to={`${url}/payment`}>Payment</Link>
@@ -39,7 +33,17 @@ const Dashboard = () => {
                             <ListGroup.Item>
                                 <Link to={`${url}/review`}>Review</Link>
                             </ListGroup.Item>
-
+                            {admin && <>
+                            <ListGroup.Item>
+                                    <Link to={`${url}/addproducts`}>Add Products</Link>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
+                                    <Link to={`${url}/makeadmin`}>Make Admin</Link>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
+                                    <Link to={`${url}/manageorders`}>Manage Orders</Link>
+                            </ListGroup.Item>
+                            </>}
                         </ListGroup>
                     </div>
                 </Col>
@@ -50,17 +54,8 @@ const Dashboard = () => {
                             <Route exact path={path}>
                                 <DashboardHome></DashboardHome>
                             </Route>
-                            <Route path={`${path}/addproducts`}>
-                                <AddProducts></AddProducts>
-                            </Route>
-                            <Route path={`${path}/makeadmin`}>
-                                <MakeAdmin></MakeAdmin>
-                            </Route>
                             <Route path={`${path}/myorders`}>
                                 <MyOrders></MyOrders>
-                            </Route>
-                            <Route path={`${path}/manageorders`}>
-                                <ManageOrders></ManageOrders>
                             </Route>
                             <Route path={`${path}/review`}>
                                 <Review></Review>
@@ -68,6 +63,15 @@ const Dashboard = () => {
                             <Route path={`${path}/payment`}>
                                 <Payment></Payment>
                             </Route>
+                            <AdminRoute path={`${path}/addproducts`}>
+                                <AddProducts></AddProducts>
+                            </AdminRoute>
+                            <AdminRoute path={`${path}/makeadmin`}>
+                                <MakeAdmin></MakeAdmin>
+                            </AdminRoute>
+                            <AdminRoute path={`${path}/manageorders`}>
+                                <ManageOrders></ManageOrders>
+                            </AdminRoute>
                         </Switch>
 
                     </div>

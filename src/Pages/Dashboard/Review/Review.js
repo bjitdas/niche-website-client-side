@@ -10,7 +10,7 @@ const Review = () => {
     const onSubmit = data => {
         const review = { ...data, name: user?.displayName, email: user.email, img: user.photoURL }
 
-        axios.post('http://localhost:5000/reviews', review)
+        axios.post('https://safe-cove-84199.herokuapp.com/reviews', review)
             .then(res => {
                 if (res.data.insertedId) {
                     reset();

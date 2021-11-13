@@ -6,7 +6,7 @@ const ManageOrders = () => {
     const [shippping, setShipping] = useState('Pending')
 
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://safe-cove-84199.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])

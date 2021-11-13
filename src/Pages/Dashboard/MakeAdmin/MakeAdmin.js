@@ -8,8 +8,8 @@ const MakeAdmin = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data)
-        axios.put('http://localhost:5000/users/admin', data)
+
+        axios.put('https://safe-cove-84199.herokuapp.com/users/admin', data)
             .then(res => {
                 if (res.data.matchedCount) {
                     setSuccess(true);

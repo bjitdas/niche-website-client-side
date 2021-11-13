@@ -8,7 +8,7 @@ const AddProducts = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        axios.post('http://localhost:5000/products', data)
+        axios.post('https://safe-cove-84199.herokuapp.com/products', data)
             .then(res => {
                 if (res.data.insertedId) {
                     setSuccess(true)

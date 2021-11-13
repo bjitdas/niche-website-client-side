@@ -4,7 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 const CustomerReview = ({ buyerReview }) => {
     const { name, img, review, Rating } = buyerReview;
-    console.log(Rating)
+
     return (
         <div>
             <div className="d-flex m-4 p-4 border border-2 border-dark bg-light rounded">
