@@ -18,7 +18,7 @@ const CustomerReview = ({ buyerReview }) => {
                 </div>
                 <div>
                     <h5>{name}</h5>
-                    <div style={{ color: 'goldenrod', fontSize: '25px' }}>
+                    <div style={{ color: 'goldenrod', fontSize: '20px' }}>
                         {[...Array(parseInt(Rating))].map(star => {
                             return <FaStar />
                         })}
