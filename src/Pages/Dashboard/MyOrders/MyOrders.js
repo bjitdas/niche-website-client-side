@@ -14,7 +14,7 @@ const MyOrders = () => {
 
     return (
         <div>
-            <h6>{user?.displayName} your orders</h6>
+            <h3 className="m-4 text-danger">Hi {user?.displayName.split(" ")[0]}! <br /> Your Orders:</h3>
             <div>
                 <Table striped bordered hover>
                     <thead>
