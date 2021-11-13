@@ -12,6 +12,24 @@ const MyOrders = () => {
             .then(data => setMyOrders(data))
     }, [user.email])
 
+    const handleCancelOrder = id => {
+        const proceed = window.confirm('Are You Sure? You Want to Delete!!')
+        if (proceed) {
+            const url = `https://safe-cove-84199.herokuapp.com/orders/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('deleted successfully')
+                        const remaining = myOrders.filter(product => product._id !== id);
+                        setMyOrders(remaining)
+                    }
+                })
+        }
+    }
+
     return (
         <div>
             <h3 className="m-4 text-danger">Hi {user?.displayName.split(" ")[0]}! <br /> Your Orders:</h3>
@@ -33,7 +51,7 @@ const MyOrders = () => {
                                 {myOrder.email === user.email && <tr>
                                     <td>{myOrder.productName}</td>
                                     <td>{myOrder.price}</td>
-                                    <td><button type="submit">Cancel Order</button> </td>
+                                    <td><button onClick={() => handleCancelOrder(myOrder._id)} className="btn btn-secondary" >Cancel Order</button> </td>
                                 </tr>}
                             </tbody>
 

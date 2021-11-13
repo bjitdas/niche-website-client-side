@@ -5,7 +5,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://safe-cove-84199.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
@@ -14,13 +14,12 @@ const ManageProducts = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure? You want to delete!!')
         if (proceed) {
-            const url = `http://localhost:5000/products/${id}`;
+            const url = `https://safe-cove-84199.herokuapp.com/products/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.deletedCount > 0) {
                         alert('deleted successfully')
                         const remaining = products.filter(product => product._id !== id);
@@ -30,7 +29,6 @@ const ManageProducts = () => {
         }
     }
 
-    console.log(products)
     return (
         <div>
             <div>
@@ -49,7 +47,7 @@ const ManageProducts = () => {
                                 <tr>
                                     <td>{product.name}</td>
                                     <td>{product.price}</td>
-                                    <td> <button onClick={() => handleDelete(product._id)}>Delete Product</button> </td>
+                                    <td> <button className="btn btn-danger" onClick={() => handleDelete(product._id)}>Delete Product</button> </td>
                                 </tr>
                             </tbody>
                         )

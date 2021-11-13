@@ -36,7 +36,7 @@ const ManageOrders = () => {
                                     <td>{order.customerName}</td>
                                     <td>{order.productName}</td>
                                     <td>{order.price}</td>
-                                    <td><button onClick={handleShipping} className="">{shippping}</button></td>
+                                    <td><button onClick={handleShipping} className="btn btn-success">{shippping}</button></td>
                                 </tr>
                             </tbody>
                         )
